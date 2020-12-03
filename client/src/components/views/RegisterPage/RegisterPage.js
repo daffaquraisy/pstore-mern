@@ -5,8 +5,6 @@ import * as Yup from "yup";
 import { registerUser } from "../../../_actions/user_actions";
 import { useDispatch } from "react-redux";
 
-import { Form, Input, Button } from "antd";
-
 const formItemLayout = {
   labelCol: {
     xs: { span: 24 },
@@ -36,14 +34,14 @@ function RegisterPage(props) {
     <Formik
       initialValues={{
         email: "",
-        lastName: "",
+        address: "",
         name: "",
         password: "",
         confirmPassword: "",
       }}
       validationSchema={Yup.object().shape({
         name: Yup.string().required("Name is required"),
-        lastName: Yup.string().required("Last Name is required"),
+        address: Yup.string().required("Address Name is required"),
         email: Yup.string()
           .email("Email is invalid")
           .required("Email is required"),
@@ -60,7 +58,7 @@ function RegisterPage(props) {
             email: values.email,
             password: values.password,
             name: values.name,
-            lastname: values.lastname,
+            address: values.address,
             image: `http://gravatar.com/avatar/${moment().unix()}?d=identicon`,
           };
 
@@ -93,29 +91,119 @@ function RegisterPage(props) {
             <h3 className="text-center">Register</h3>
             <div className="row d-flex justify-content-center">
               <div className="col-md-4">
-                <form>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
+                <form {...formItemLayout} onSubmit={handleSubmit}>
+                  <div className="form-group">
+                    <label for="name">Name</label>
+                    <input
+                      type="text"
+                      className={
+                        errors.name && touched.name
+                          ? "form-control is-valid"
+                          : "form-control"
+                      }
+                      id="name"
+                      placeholder="Name"
+                      value={values.name}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+
+                    {errors.name && touched.name && (
+                      <div className="text-danger">{errors.name}</div>
+                    )}
+                  </div>
+
+                  <div className="form-group">
+                    <label for="">Email address</label>
                     <input
                       type="email"
-                      class="form-control"
-                      id="exampleInputEmail1"
-                      aria-describedby="emailHelp"
+                      className={
+                        errors.email && touched.email
+                          ? "form-control is-valid"
+                          : "form-control"
+                      }
+                      id="email"
+                      placeholder="Email"
+                      value={values.email}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
                     />
-                    <small id="emailHelp" class="form-text text-muted">
-                      We'll never share your email with anyone else.
-                    </small>
+
+                    {errors.email && touched.email && (
+                      <div className="text-danger">{errors.email}</div>
+                    )}
                   </div>
-                  <div class="form-group">
+
+                  <div className="form-group">
+                    <label for="">Address</label>
+                    <input
+                      type="text"
+                      className={
+                        errors.address && touched.address
+                          ? "form-control is-valid"
+                          : "form-control"
+                      }
+                      id="address"
+                      placeholder="Address"
+                      value={values.address}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+
+                    {errors.address && touched.address && (
+                      <div className="text-danger">{errors.address}</div>
+                    )}
+                  </div>
+
+                  <div className="form-group">
                     <label for="exampleInputPassword1">Password</label>
                     <input
                       type="password"
-                      class="form-control"
-                      id="exampleInputPassword1"
+                      className="form-control"
+                      id="password"
+                      value={values.password}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      className={
+                        errors.password && touched.password
+                          ? "form-control is-valid"
+                          : "form-control"
+                      }
+                      placeholder="Password"
                     />
+                    {errors.password && touched.password && (
+                      <div className="text-danger">{errors.password}</div>
+                    )}
                   </div>
 
-                  <button type="submit" class="btn btn-primary">
+                  <div className="form-group">
+                    <label for="exampleInputPassword1">Confirm Password</label>
+                    <input
+                      type="password"
+                      value={values.confirmPassword}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      className={
+                        errors.confirmPassword && touched.confirmPassword
+                          ? "form-control is-valid"
+                          : "form-control"
+                      }
+                      id="confirmPassword"
+                      placeholder="Password"
+                    />
+                    {errors.confirmPassword && touched.confirmPassword && (
+                      <div className="text-danger">
+                        {errors.confirmPassword}
+                      </div>
+                    )}
+                  </div>
+
+                  <button
+                    onClick={handleSubmit}
+                    type="primary"
+                    disabled={isSubmitting}
+                    className="btn my-btn"
+                  >
                     Submit
                   </button>
                 </form>
