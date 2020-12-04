@@ -86,29 +86,54 @@ function LoginPage(props) {
             <h3 className="text-center">Login</h3>
             <div className="row d-flex justify-content-center">
               <div className="col-md-4">
-                <form>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
+                <form onSubmit={handleSubmit}>
+                  <div className="form-group">
+                    <label>Email address</label>
                     <input
                       type="email"
-                      class="form-control"
-                      id="exampleInputEmail1"
+                      className={
+                        errors.email && touched.email
+                          ? "form-control is-valid"
+                          : "form-control"
+                      }
+                      id="email"
+                      value={values.email}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
                       aria-describedby="emailHelp"
+                      placeholder="Email"
                     />
-                    <small id="emailHelp" class="form-text text-muted">
-                      We'll never share your email with anyone else.
-                    </small>
+                    {errors.email && touched.email && (
+                      <div className="text-danger">{errors.email}</div>
+                    )}
                   </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
+                  <div className="form-group">
+                    <label>Password</label>
                     <input
                       type="password"
-                      class="form-control"
-                      id="exampleInputPassword1"
+                      className="form-control"
+                      id="password"
+                      className={
+                        errors.password && touched.password
+                          ? "form-control is-valid"
+                          : "form-control"
+                      }
+                      value={values.password}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      placeholder="Password"
                     />
+                    {errors.email && touched.email && (
+                      <div className="text-danger">{errors.email}</div>
+                    )}
                   </div>
 
-                  <button type="submit" class="btn btn-primary">
+                  <button
+                    htmlType="submit"
+                    className="btn btn-primary"
+                    disabled={isSubmitting}
+                    onSubmit={handleSubmit}
+                  >
                     Submit
                   </button>
                 </form>

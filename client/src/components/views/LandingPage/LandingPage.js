@@ -9,13 +9,16 @@ export default function LandingPage() {
             <div className="col-md-6 col-sm-12 mt-5">
               <h2 className="tag-line">Upcoming Product</h2>
               <h3 className="sub-line">
-                Playstation 4, Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Ipsam, reprehenderit!
+                Playstation 4, it almost there, wait for it.
               </h3>
             </div>
 
             <div className="col-md-6 col-sm-12 mt-5">
-              <img className="img-fluid" alt="Responsive image" />
+              <img
+                className="img-fluid"
+                src="http://localhost:3000/img/banner.png"
+                alt="Responsive image"
+              />
             </div>
           </div>
         </div>

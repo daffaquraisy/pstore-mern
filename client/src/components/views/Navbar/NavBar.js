@@ -39,9 +39,21 @@ function NavBar(props) {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ml-auto">
               <li className="nav-item active">
-                <a className="nav-link" href="#">
-                  Home <span className="sr-only">(current)</span>
-                </a>
+                <Link to="/" className="nav-link" href="#">
+                  Home
+                </Link>
+              </li>
+
+              <li className="nav-item active">
+                <Link to="/login" className="nav-link" href="#">
+                  Login
+                </Link>
+              </li>
+
+              <li className="nav-item active">
+                <Link to="/register" className="nav-link" href="#">
+                  Register
+                </Link>
               </li>
             </ul>
           </div>
@@ -69,20 +81,26 @@ function NavBar(props) {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ml-auto">
               <li className="nav-item active">
-                <a className="nav-link" href="#">
-                  Home <span className="sr-only">(current)</span>
-                </a>
+                <Link to="/" className="nav-link" href="#">
+                  Home
+                </Link>
               </li>
 
               <li className="nav-item">
                 <a className="nav-link" href="#">
                   <i className="fas fa-shopping-cart fa-lg"></i>
-                  <span className="badge badge-info">1</span>
+                  <span className="badge badge-info ml-1">1</span>
                 </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="#">
                   History
+                </a>
+              </li>
+
+              <li className="nav-item active">
+                <a className="nav-link" href="/login" onClick={logoutHandler}>
+                  Logout
                 </a>
               </li>
             </ul>
