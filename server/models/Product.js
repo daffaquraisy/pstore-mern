@@ -22,10 +22,6 @@ const productSchema = mongoose.Schema(
       type: Array,
       default: [],
     },
-    genre: {
-      type: Number,
-      default: 1,
-    },
     sold: {
       type: Number,
       maxlength: 100,
