@@ -123,8 +123,8 @@ function LoginPage(props) {
                       onBlur={handleBlur}
                       placeholder="Password"
                     />
-                    {errors.email && touched.email && (
-                      <div className="text-danger">{errors.email}</div>
+                    {errors.password && touched.password && (
+                      <div className="text-danger">{errors.password}</div>
                     )}
                   </div>
 

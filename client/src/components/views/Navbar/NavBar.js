@@ -87,10 +87,12 @@ function NavBar(props) {
               </li>
 
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <Link className="nav-link" to="/user/cart">
                   <i className="fas fa-shopping-cart fa-lg"></i>
-                  <span className="badge badge-info ml-1">1</span>
-                </a>
+                  <span className="badge badge-info ml-1">
+                    {userData && userData.cart.length}
+                  </span>
+                </Link>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="#">
